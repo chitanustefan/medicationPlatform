@@ -1,0 +1,88 @@
+<style>
+      table {
+        width: 100%;
+        table-layout: fixed;
+      }
+      
+      th, td {
+        overflow: hidden;
+        width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .fill-space {
+      flex: 10 10 auto;
+      }
+      .right {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 82%;
+      }
+      .container{
+          margin-top: 20px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+</style>
+      
+      
+      <mat-sidenav-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+        <mat-sidenav opened mode="side">
+            <mat-list role="list">
+                <mat-list-item role="listitem"><button mat-button (click)="patientList()"><mat-icon>face</mat-icon> Patients</button></mat-list-item>
+                <mat-list-item role="listitem"><button mat-button (click)="caregiverList()">	<mat-icon>supervisor_account</mat-icon> Caregivers</button></mat-list-item>
+                <mat-list-item role="listitem"><button mat-button (click)="medicationList()"> <mat-icon>healing</mat-icon>Medications</button></mat-list-item>
+                <mat-list-item role="listitem"><button mat-button (click)="medplanList()"> 	<mat-icon>note_add</mat-icon>Create a Med Plan</button></mat-list-item>
+              </mat-list>             
+        </mat-sidenav>
+        <div class="container">
+        <form class="example-form">
+            <mat-form-field>
+                <mat-label>Patient</mat-label>
+                <mat-select [(ngModel)]="id" name="id">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let patient of patients" [value]="patient.id_patient">{{patient.id_patient}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput [(ngModel)]="intake_intervals" name="intake_intervals" placeholder="Intake Intervals" >
+            </mat-form-field>
+        
+            <mat-form-field>
+                <input matInput [(ngModel)]="period" name="period" placeholder="Period" >
+            </mat-form-field>
+                
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="list" class="mat-elevation-z8" >
+    
+                    <ng-container matColumnDef="id_medication">
+                        <th mat-header-cell *matHeaderCellDef> Id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id_medication}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="dosage">
+                        <th mat-header-cell *matHeaderCellDef> Dosage </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dosage}} </td>
+                      </ng-container>
+                  
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
+                            <td mat-cell *matCellDef="let element">
+                              <input class="form-check-input" (click)="onChange(element) "type="checkbox">
+                        </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div>
+            </form>
+
+        <button mat-raised-button color="primary"  (click)="onOK()" cdkFocusInitial>Create</button>
+        </div>
+      </mat-sidenav-container>

@@ -1,0 +1,90 @@
+<style>
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+    
+    th, td {
+      overflow: hidden;
+      width: 200px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fill-space {
+    flex: 10 10 auto;
+    }
+    .right {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: 82%;
+    }
+    .container{
+          margin-top: 20px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+</style>
+    
+    
+    <mat-sidenav-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+      <mat-sidenav opened mode="side">
+          <mat-list role="list">
+            <mat-list-item role="listitem"><button mat-button (click)="patientList()"><mat-icon>face</mat-icon> Patients</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="caregiverList()">	<mat-icon>supervisor_account</mat-icon> Caregivers</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="medicationList()"> <mat-icon>healing</mat-icon>Medications</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="medplanList()"> 	<mat-icon>note_add</mat-icon>Create a Med Plan</button></mat-list-item>
+            </mat-list>             
+      </mat-sidenav>
+  
+      <div class="container">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="list" class="mat-elevation-z8" >
+
+              <ng-container matColumnDef="id_caregiver">
+                  <th mat-header-cell *matHeaderCellDef > ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id_caregiver}} </td>
+                </ng-container>
+              
+
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef > Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef > Gender </th>
+                  <td mat-cell *matCellDef="let element"> {{element.user.gender}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="birthday">
+                    <th mat-header-cell *matHeaderCellDef > Birthday </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user.birthday | date:'mediumDate'}} </td>
+                  </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef > Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary"(click)="openDialog(element)">
+                            <mat-icon>account_circle</mat-icon>
+                        </button>
+
+                          <button mat-icon-button color="warn" (click)="openDialogDelete(element.id_caregiver)">
+                              <mat-icon>delete</mat-icon>
+                          </button>
+                  </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+      </div>
+      <div class="right">
+          <button  class="d-inline" mat-fab color="green" (click)="openDialogAdd()"><mat-icon>add</mat-icon></button>
+      </div>
+    </mat-sidenav-container>

@@ -1,0 +1,25 @@
+<div>
+      <form class="example-form">
+      
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="medication.name"  name="name" placeholder="Name" >
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="medication.side_effect" name="side_effect" placeholder="Side Effect"  >
+          </mat-form-field></td>
+        </tr></table>
+      
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="medication.dosage" name="dosage" placeholder="Dosage">
+          </mat-form-field></td>
+        </tr></table>
+      </form>
+  
+  
+  </div>
+      <div mat-dialog-actions>
+        <button mat-raised-button color="primary"  (click)="onOK()" cdkFocusInitial>OK</button>
+        <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  </div>

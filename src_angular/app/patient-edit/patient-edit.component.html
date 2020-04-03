@@ -1,0 +1,40 @@
+<div>
+        <h1 mat-dialog-title>Hi {{data.id_patient}}</h1>
+    <!-- <mat-form-field>
+      <input matInput placeholder="Nota" [(ngModel)]="data.grade"> 
+    </mat-form-field> -->
+
+    <form class="example-form">
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="name" name="name" placeholder="{{data.user.name}}" >
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="email" name="email" placeholder="{{data.user.email}}"  >
+        </mat-form-field></td>
+      </tr></table>
+    
+      <p>
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="birthday" name="birthday" placeholder="{{data.user.birthday}}" >
+        </mat-form-field>
+      </p>
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="City">
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="State">
+        </mat-form-field></td>
+      </tr></table>
+    </form>
+
+
+</div>
+    
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary"  (click)="onOK(data)" cdkFocusInitial>OK</button>
+      <button mat-raised-button (click)="onNoClick()">Cancel</button>
+    </div>

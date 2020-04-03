@@ -1,0 +1,104 @@
+<style>
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+    
+    th, td {
+      overflow: hidden;
+      width: 200px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fill-space {
+    flex: 10 10 auto;
+    }
+    .right {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: 82%;
+    }
+</style>
+    
+    
+    <mat-sidenav-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+      <mat-sidenav opened mode="side">
+          <mat-list role="list">
+              <mat-list-item role="listitem"><button mat-button routerLink="patientList()"><mat-icon>face</mat-icon> Patients</button></mat-list-item>
+            </mat-list>             
+      </mat-sidenav>
+  
+      <div>             
+          
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="list" class="mat-elevation-z8" >
+
+              <ng-container matColumnDef="id_patient">
+                  <th mat-header-cell *matHeaderCellDef > ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id_patient}} </td>
+                </ng-container>
+              
+
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef > Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef > Gender </th>
+                  <td mat-cell *matCellDef="let element"> {{element.user.gender}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="birthday">
+                    <th mat-header-cell *matHeaderCellDef > Birthday </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user.birthday | date:'mediumDate'}} </td>
+                  </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef > Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                  </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class = "container">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="listRec" class="mat-elevation-z8" >
+
+              <ng-container matColumnDef="id_recommendation">
+                  <th mat-header-cell *matHeaderCellDef > ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id_recommendation}} </td>
+                </ng-container>
+              
+
+                <ng-container matColumnDef="id_patient">
+                  <th mat-header-cell *matHeaderCellDef > Patient ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id_patient}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="dateReco">
+                  <th mat-header-cell *matHeaderCellDef > Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.dateReco | date:'mediumDate'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="desc">
+                    <th mat-header-cell *matHeaderCellDef > Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+                  </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+      </div>
+
+    </mat-sidenav-container>
+
+
+    

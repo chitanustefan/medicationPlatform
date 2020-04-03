@@ -1,0 +1,32 @@
+<div>
+    <h1 mat-dialog-title>Hi {{data.id_medication}}</h1>
+<!-- <mat-form-field>
+  <input matInput placeholder="Nota" [(ngModel)]="data.grade"> 
+</mat-form-field> -->
+
+<form class="example-form">
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="name" name="name" placeholder="{{data.name}}" >
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="dosage" name="dosage" placeholder="{{data.dosage}}"  >
+    </mat-form-field></td>
+  </tr>
+  <tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="side_effect" name="side_effect" placeholder="{{data.side_effect}}"  >
+    </mat-form-field></td>
+  </tr>
+  </table>
+
+</form>
+
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary"  (click)="onOK(data)" cdkFocusInitial>OK</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>

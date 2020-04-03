@@ -1,0 +1,52 @@
+<div>
+  {{data.id_user}}
+    <form class="example-form">
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="user.name"  name="name" placeholder="Name" >
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="user.email" name="email" placeholder="Email"  >
+        </mat-form-field></td>
+      </tr></table>
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput id="password" [(ngModel)]="user.password" name="password" placeholder="Password" [type]="hide ? 'text' : 'password'">
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="confpassword" name="confpassword" placeholder="Confirm password" [type]="hide ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field></td>
+      </tr></table>
+      <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthday" name="birthday" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+             </mat-form-field>
+          </td>
+          <td>
+            <mat-radio-group>
+                    <label>Gender: </label>
+                    <mat-radio-group aria-labelledby="example-radio-group-label"
+                    class="example-radio-group" [(ngModel)]="user.gender" name="gender">
+                      <mat-radio-button class="example-radio-button"  *ngFor="let gender of genders" [value]="gender">
+                        {{gender}}
+                      </mat-radio-button>
+                    </mat-radio-group>      
+             </mat-radio-group>
+             <div> ass {{selectedGender}}</div>
+          </td>
+      </tr>
+
+    </form>
+
+
+</div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary"  (click)="onOK()" cdkFocusInitial>OK</button>
+      <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>

@@ -1,0 +1,31 @@
+<!-- <mat-drawer-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+    <mat-drawer #drawer mode="side" class="toolbar">
+      <p>Auto-resizing sidenav</p>
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div>
+  
+  </mat-drawer-container> -->
+
+  <mat-sidenav-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+    <mat-sidenav opened mode="side">
+        <mat-list role="list">
+            <mat-list-item role="listitem"><button mat-button (click)="patientList()"><mat-icon>face</mat-icon> Patients</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="caregiverList()">	<mat-icon>supervisor_account</mat-icon> Caregivers</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="medicationList()"> <mat-icon>healing</mat-icon>Medications</button></mat-list-item>
+            <mat-list-item role="listitem"><button mat-button (click)="medplanList()"> 	<mat-icon>note_add</mat-icon>Create a Med Plan</button></mat-list-item>
+          </mat-list>             
+    </mat-sidenav>
+
+    <div class="example-sidenav-content">
+       <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
